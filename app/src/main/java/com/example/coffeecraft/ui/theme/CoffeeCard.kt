@@ -72,7 +72,9 @@ fun CoffeeCard(
                 Spacer(modifier = Modifier.height(4.dp)) // Jarak kecil
 
                 // Harga (Diformat ke Rupiah)
-                val formattedPrice = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("id-ID")).format(coffee.price)
+                val formattedPrice =
+                    NumberFormat.getCurrencyInstance(Locale.forLanguageTag("id-ID"))
+                        .format(coffee.price)
                 Text(
                     text = formattedPrice,
                     style = MaterialTheme.typography.bodyMedium,
