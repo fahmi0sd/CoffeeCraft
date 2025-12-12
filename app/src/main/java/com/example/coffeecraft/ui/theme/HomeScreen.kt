@@ -16,6 +16,7 @@ import com.example.coffeecraft.data.CoffeeDataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     // 1. Ambil data dari DataSource yang kita buat di Hari 2
@@ -53,7 +54,13 @@ fun HomeScreen(
                 items = coffees,
                 key = { it.id } // Key unik membantu performa render (penting untuk profesional code)
             ) { coffee ->
-                CoffeeCard(coffee = coffee)
+                CoffeeCard(
+                    coffee = coffee,
+                    onItemClick = { clickedCoffee ->
+                        // 2. Saat kartu diklik, panggil navigasi dengan membawa ID
+                        navigateToDetail(clickedCoffee.id)
+                    }
+                )
             }
         }
     }

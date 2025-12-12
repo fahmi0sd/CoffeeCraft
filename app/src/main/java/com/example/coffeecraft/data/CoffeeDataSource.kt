@@ -22,8 +22,8 @@ object CoffeeDataSource {
         ),
         Coffee(
             id = 3,
-            name = "Latte Macchiato",
-            description = "Latte macchiato adalah minuman kopi susu yang namanya berarti 'susu bernoda'. Minuman ini ditandai dengan tanda espresso di atas susu.",
+            name = "Latte",
+            description = "Latte adalah minuman kopi susu yang namanya berarti 'susu bernoda'. Minuman ini ditandai dengan tanda espresso di atas susu.",
             price = 32000.0,
             imageRes = R.drawable.latte_art, // Sesuaikan nama file
             rating = 4.7

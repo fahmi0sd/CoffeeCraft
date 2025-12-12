@@ -1,5 +1,6 @@
 package com.example.coffeecraft.ui.theme
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.* // Menggunakan Material 3
@@ -20,13 +21,15 @@ import androidx.compose.ui.res.painterResource
 @Composable
 fun CoffeeCard(
     coffee: Coffee, // Menerima data kopi sebagai parameter
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onItemClick: (Coffee) -> Unit
 ) {
     // Card adalah pembungkus dengan bayangan dan sudut membulat
     Card(
         modifier = modifier
             .padding(8.dp) // Jarak antar kartu
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onItemClick(coffee) }, // Tambahkan ini agar card bisa diklik
         shape = RoundedCornerShape(16.dp), // Sudut membulat 16dp
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp), // Efek bayangan
         colors = CardDefaults.cardColors(
@@ -46,14 +49,8 @@ fun CoffeeCard(
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
 
                 // TAMBAHAN PENTING UNTUK PREVIEW:
-                // Gambar yang muncul sementara saat gambar asli sedang dimuat.
-                // Preview akan menggunakan ini karena proses loading dianggap belum selesai.
                 placeholder = painterResource(id = R.drawable.ic_launcher_background),
-
-                // Gambar yang muncul jika proses loading gagal (sering terjadi di preview juga).
                 error = painterResource(id = R.drawable.ic_launcher_background),
-
-                // (Opsional) Gambar yang muncul jika model/datanya null.
                 fallback = painterResource(id = R.drawable.ic_launcher_background)
             )
 
@@ -98,5 +95,5 @@ fun CoffeeCardPreview() {
         rating = 4.5
     )
 
-    CoffeeCard(coffee = sampleCoffee)
+    CoffeeCard(coffee = sampleCoffee, onItemClick = {})
 }
